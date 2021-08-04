@@ -124,7 +124,10 @@ Public Class frmMain
     Public PLC_Port_Open_OK As Boolean
     Public Alarm_Bit(320) As Boolean
     Public Alarm_Bit_Old(320) As Boolean
-    Public AlarmComment(2000)
+    Public AlarmComment(2000) As String
+    Public TempAlarm_Bit(15) As Boolean
+    Public TempAlarm_Bit_Old(15) As Boolean
+    Public TempAlarmComment(15) As String
 
     Public test_i As Integer
     Public test_j As Integer
@@ -2575,6 +2578,11 @@ Public Class frmMain
                 FileClose(FileNo)       '열었던 파일을 닫는다.
             End If
 
+            TempAlarmComment(0) = "히터 1번 런이 안됩니다..."
+            TempAlarmComment(1) = "히터 2번 런이 안됩니다..."
+            TempAlarmComment(2) = "히터 1번 온도 상승 편차 에러 발생..."
+            TempAlarmComment(3) = "히터 2번 온도 상승 편차 에러 발생..."
+
         Catch ex As Exception
             MsgDisplay("Alarm Comment File Open Err : " & ex.Message, Color.Red)
         End Try
@@ -3694,6 +3702,7 @@ ErrorHandler:
 
     Private Sub btnAlarmReset_MouseDown(sender As Object, e As MouseEventArgs) Handles btnAlarmReset.MouseDown
         iReturnCode = AxActUtlType1.WriteDeviceRandom("M5", 1, 1) 'bit
+        Array.Clear(TempAlarm_Bit, 0, 16)
     End Sub
 
     Private Sub btnAlarmReset_MouseUp(sender As Object, e As MouseEventArgs) Handles btnAlarmReset.MouseUp
@@ -5182,7 +5191,7 @@ ErrorHandler:
                     Call UP35A_Send(3,,, 2)
                     Call UP35A_Send1(3,,, 2)
                     UP35A_PV_Save_Flag = True
-                    UP35A_PV_interval = GetTickCount + 1000 '500
+                    UP35A_PV_interval = GetTickCount + 2000 '500
                 End If
                 TempSeq += 1
 
@@ -5256,7 +5265,7 @@ ErrorHandler:
 
             Case 13  'Set Data Write (Write)
                 Call UP35A_Send(16, numTempSV1.Value, numTagetTime1.Value, 3, 1)
-                Call UP35A_Send1(16, numTempSV1.Value, numTagetTime1.Value, 3, 1)
+                Call UP35A_Send1(16, numTempSV2.Value, numTagetTime2.Value, 3, 1)
                 TempSeq += 1
 
             Case 14  'Set Data Write (Select Prg=1, Seg=2)
@@ -5266,7 +5275,7 @@ ErrorHandler:
 
             Case 15  'Set Data Write (Write) 
                 Call UP35A_Send(16, numTempSV1.Value, 900, 3, 2)
-                Call UP35A_Send1(16, numTempSV1.Value, 900, 3, 2)
+                Call UP35A_Send1(16, numTempSV2.Value, 900, 3, 2)
                 TempSeq += 1
 
             Case 16  'Set Data Write (Select Prg=1, Seg=1)
@@ -5294,19 +5303,13 @@ ErrorHandler:
                     UP35A_DualRunChkFlag = False
                 Else
                     If UP35A_RunStop <> 1 Then
-                        MsgDisplay("히터 1번 런이 안됩니다...", Color.Red)
-                        lst_Alarm.Items.Add("히터 1번 런이 안됩니다...")
+                        TempAlarm_Bit(0) = True
+                        'MsgDisplay("히터 1번 런이 안됩니다...", Color.Red)
                     End If
                     If UP35A_RunStop1 <> 1 Then
-                        MsgDisplay("히터 2번 런이 안됩니다...", Color.Red)
-                        lst_Alarm.Items.Add("히터 2번 런이 안됩니다...")
+                        TempAlarm_Bit(1) = True
+                        'MsgDisplay("히터 2번 런이 안됩니다...", Color.Red)
                     End If
-
-                    lst_Alarm.SelectedIndex = lst_Alarm.Items.Count - 1
-                    If lst_Alarm.Items.Count > 100 Then lst_Alarm.Items.RemoveAt(0)
-
-                    Call btnHeaterOFF_Click(Nothing, Nothing)
-                    iReturnCode = AxActUtlType1.WriteDeviceRandom("Y123", 1, 1) 'bit Buzzer ON 
                     UP35A_DualRunChkFlag = False
                 End If
 
@@ -5314,16 +5317,76 @@ ErrorHandler:
                 If UP35A_RunStop = 1 And UP35A_RunStop1 = 1 Then
                     UP35A_Temp_Control_Start_Flag = True
                     UP35A_DualRunChkFlag = False
-                    'Start temp remember
+                    UP35A_temp_old = UP35A_temp
+                    UP35A_temp_old1 = UP35A_temp1
+                    UP35A_PV_Chk_Time = GetTickCount + 60000
+                    UP35A_PV_Chk_TimeStep = 50000
                 End If
             End If
-
         End If
 
-        'numTempDeviation  Err
-        'workdata.
+
+        '** TempDeviation Err
+        If UP35A_Temp_Control_Start_Flag = True Then
+            If GetTickCount > UP35A_PV_Chk_Time Then
+                UP35A_temp_old = UP35A_temp
+                UP35A_temp_old1 = UP35A_temp1
+                UP35A_PV_Chk_Time = GetTickCount + 60000
+                UP35A_PV_Chk_TimeStep = 50000
+
+            Else
+                If (UP35A_PV_Chk_Time - GetTickCount) <= UP35A_PV_Chk_TimeStep Then
+                    'Debug.Print((UP35A_PV_Chk_Time - GetTickCount))
+                    'Debug.Print("10sec = " & (UP35A_PV_Chk_Time - GetTickCount))
+
+                    Temp_Deviation = UP35A_temp - UP35A_temp_old
+                    If ((Temp_Limit_10Sec * -1) <= Temp_Deviation) And (Temp_Deviation <= Temp_Limit_10Sec) Then
+                    Else
+                        TempAlarm_Bit(2) = True     '** Heater 1 온도 상승 편차 에러
+                    End If
+
+                    Temp_Deviation1 = UP35A_temp1 - UP35A_temp_old1
+                    If ((Temp_Limit_10Sec * -1) <= Temp_Deviation1) And (Temp_Deviation1 <= Temp_Limit_10Sec) Then
+                    Else
+                        TempAlarm_Bit(3) = True     '** Heater 2 온도 상승 편차 에러
+                    End If
+
+                    Temp_1_2_Deviation = UP35A_temp - UP35A_temp1
+                    If ((numTempDeviation.Value * -1) <= Temp_1_2_Deviation) And (Temp_1_2_Deviation <= numTempDeviation.Value) Then
+                    Else
+                        TempAlarm_Bit(4) = True     '** Heater 1,2 온도 편차 에러
+                    End If
+
+
+                    UP35A_PV_Chk_TimeStep -= 10000  '10sec interval
+                End If
+
+            End If
+        End If
+
+        'ToDo UP35A Err Chk
+        'ToDo Heater 관련 input (X0~) Err chk
+
+        For i = 0 To 15
+            If TempAlarm_Bit(i) = True Then
+                If TempAlarm_Bit_Old(i) = False Then
+                    TempAlarm_Bit_Old(i) = True
+                    lst_Alarm.Items.Add(TempAlarmComment(i))
+                    lst_Alarm.SelectedIndex = lst_Alarm.Items.Count - 1
+                    If lst_Alarm.Items.Count > 100 Then lst_Alarm.Items.RemoveAt(0)
+                    Call btnHeaterOFF_Click(Nothing, Nothing)                   '** Heater Off
+                    iReturnCode = AxActUtlType1.WriteDeviceRandom("Y123", 1, 1) '** bit Buzzer ON 
+                End If
+            Else
+                TempAlarm_Bit_Old(i) = False
+            End If
+        Next
+
 
     End Sub
 
+    Private Sub btnTempSV_Save_Click(sender As Object, e As EventArgs) Handles btnTempSV_Save.Click
+        Call Save_EQ_Val_ini()
 
+    End Sub
 End Class

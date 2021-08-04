@@ -48,9 +48,20 @@ Module modDefine
     Public PlcData_M6(0) As Short
     Public Const PLC_Step_CNT_ = 20
     Public Const PLC_Step_Complete_ = 21
+
+    Public Const Temp_of_10sec_Ref_ = 0.1666    ''60초 : 1도 = 10초 : ?도
     Public AutoStatFlag As Boolean
+    Public UP35A_PV_Chk_Time As Integer
+    Public UP35A_PV_Chk_TimeStep As Integer
+    Public Temp_Limit_10Sec As Double
+    Public Temp_Deviation As Double
+    Public Temp_Deviation1 As Double
+    Public Temp_1_2_Deviation As Double
+    'Public UP35A_PV_Chk_Time_Per_Min As Integer
     Public UP35A_PV_interval As Integer
     Public UP35A_Temp_Control_Start_Flag As Boolean
+    Public UP35A_temp_old As Short
+    Public UP35A_temp_old1 As Short
     Public UP35A_temp As Short
     Public UP35A_temp1 As Short
     Public UP35A_RunStop As Short

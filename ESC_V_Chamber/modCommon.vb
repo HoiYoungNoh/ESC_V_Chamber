@@ -438,7 +438,8 @@ Module modCommon
             lRet = WritePrivateProfileString("CONFIG", "UP35A1_SV", .UP35A1_SV, sIniFile)
             lRet = WritePrivateProfileString("CONFIG", "UP35A1_SV_Time", .UP35A1_SV_Time, sIniFile)
 
-
+            '60초 : 1도 = 10초 : ?도
+            Temp_Limit_10Sec = (frmMain.numTempDeviation.Value * 10) / 60   '10sec step
         End With
 
 
@@ -492,6 +493,8 @@ Module modCommon
                 frmMain.numTagetTime2.Value = .UP35A1_SV_Time
             End With
 
+            '60초 : 1도 = 10초 : ?도
+            Temp_Limit_10Sec = (frmMain.numTempDeviation.Value * 10) / 60   '10sec step
 
         Catch ex As Exception
             Debug.Print("Load EQ Val Err : " & ex.Message)

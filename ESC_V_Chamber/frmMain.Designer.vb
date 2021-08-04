@@ -23,13 +23,13 @@ Partial Class frmMain
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim ChartArea3 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend3 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea4 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend4 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series4 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lblMessage = New System.Windows.Forms.Label()
@@ -3339,8 +3339,8 @@ Partial Class frmMain
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.AllowUserToResizeColumns = False
         Me.DataGridView1.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.DataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.DataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle2
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column6, Me.Column7})
         Me.DataGridView1.Location = New System.Drawing.Point(5, 6)
@@ -3511,20 +3511,21 @@ Partial Class frmMain
         'Label76
         '
         Me.Label76.AutoSize = True
+        Me.Label76.Font = New System.Drawing.Font("굴림", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
         Me.Label76.Location = New System.Drawing.Point(913, 633)
         Me.Label76.Name = "Label76"
-        Me.Label76.Size = New System.Drawing.Size(34, 21)
+        Me.Label76.Size = New System.Drawing.Size(30, 24)
         Me.Label76.TabIndex = 221
-        Me.Label76.Text = "+-"
+        Me.Label76.Text = "±"
         '
         'Label75
         '
         Me.Label75.AutoSize = True
         Me.Label75.Location = New System.Drawing.Point(1039, 633)
         Me.Label75.Name = "Label75"
-        Me.Label75.Size = New System.Drawing.Size(32, 21)
+        Me.Label75.Size = New System.Drawing.Size(31, 21)
         Me.Label75.TabIndex = 220
-        Me.Label75.Text = "'C"
+        Me.Label75.Text = "℃"
         '
         'numTempDeviation
         '
@@ -3625,9 +3626,9 @@ Partial Class frmMain
         Me.Label67.AutoSize = True
         Me.Label67.Location = New System.Drawing.Point(668, 648)
         Me.Label67.Name = "Label67"
-        Me.Label67.Size = New System.Drawing.Size(32, 21)
+        Me.Label67.Size = New System.Drawing.Size(31, 21)
         Me.Label67.TabIndex = 209
-        Me.Label67.Text = "'C"
+        Me.Label67.Text = "℃"
         '
         'numTempSV1
         '
@@ -3662,9 +3663,9 @@ Partial Class frmMain
         Me.Label66.AutoSize = True
         Me.Label66.Location = New System.Drawing.Point(182, 643)
         Me.Label66.Name = "Label66"
-        Me.Label66.Size = New System.Drawing.Size(32, 21)
+        Me.Label66.Size = New System.Drawing.Size(31, 21)
         Me.Label66.TabIndex = 203
-        Me.Label66.Text = "'C"
+        Me.Label66.Text = "℃"
         '
         'Label63
         '
@@ -3689,9 +3690,9 @@ Partial Class frmMain
         Me.Label54.AutoSize = True
         Me.Label54.Location = New System.Drawing.Point(641, 594)
         Me.Label54.Name = "Label54"
-        Me.Label54.Size = New System.Drawing.Size(32, 21)
+        Me.Label54.Size = New System.Drawing.Size(31, 21)
         Me.Label54.TabIndex = 199
-        Me.Label54.Text = "'C"
+        Me.Label54.Text = "℃"
         '
         'lblTemp2
         '
@@ -3707,9 +3708,9 @@ Partial Class frmMain
         Me.Label57.AutoSize = True
         Me.Label57.Location = New System.Drawing.Point(154, 589)
         Me.Label57.Name = "Label57"
-        Me.Label57.Size = New System.Drawing.Size(32, 21)
+        Me.Label57.Size = New System.Drawing.Size(31, 21)
         Me.Label57.TabIndex = 197
-        Me.Label57.Text = "'C"
+        Me.Label57.Text = "℃"
         '
         'lblTemp1
         '
@@ -3744,33 +3745,33 @@ Partial Class frmMain
         '
         Me.Chart2.BackColor = System.Drawing.Color.Black
         Me.Chart2.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.Center
-        ChartArea1.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount
-        ChartArea1.AxisX.IsLabelAutoFit = False
-        ChartArea1.AxisX.LabelStyle.Interval = 0R
-        ChartArea1.AxisX.LabelStyle.IntervalOffset = 0R
-        ChartArea1.AxisX.LabelStyle.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.[Auto]
-        ChartArea1.AxisX.LabelStyle.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.[Auto]
-        ChartArea1.AxisX.MajorGrid.Interval = 0R
-        ChartArea1.AxisX.MajorGrid.IntervalOffset = 0R
-        ChartArea1.AxisX.MajorGrid.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.[Auto]
-        ChartArea1.AxisX.MaximumAutoSize = 10.0!
-        ChartArea1.AxisX.ScrollBar.BackColor = System.Drawing.Color.Red
-        ChartArea1.AxisX.TitleFont = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        ChartArea1.AxisX2.IsLabelAutoFit = False
-        ChartArea1.CursorX.AutoScroll = False
-        ChartArea1.Name = "ChartArea1"
-        Me.Chart2.ChartAreas.Add(ChartArea1)
-        Legend1.Enabled = False
-        Legend1.Name = "Legend1"
-        Me.Chart2.Legends.Add(Legend1)
+        ChartArea3.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount
+        ChartArea3.AxisX.IsLabelAutoFit = False
+        ChartArea3.AxisX.LabelStyle.Interval = 0R
+        ChartArea3.AxisX.LabelStyle.IntervalOffset = 0R
+        ChartArea3.AxisX.LabelStyle.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.[Auto]
+        ChartArea3.AxisX.LabelStyle.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.[Auto]
+        ChartArea3.AxisX.MajorGrid.Interval = 0R
+        ChartArea3.AxisX.MajorGrid.IntervalOffset = 0R
+        ChartArea3.AxisX.MajorGrid.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.[Auto]
+        ChartArea3.AxisX.MaximumAutoSize = 10.0!
+        ChartArea3.AxisX.ScrollBar.BackColor = System.Drawing.Color.Red
+        ChartArea3.AxisX.TitleFont = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
+        ChartArea3.AxisX2.IsLabelAutoFit = False
+        ChartArea3.CursorX.AutoScroll = False
+        ChartArea3.Name = "ChartArea1"
+        Me.Chart2.ChartAreas.Add(ChartArea3)
+        Legend3.Enabled = False
+        Legend3.Name = "Legend1"
+        Me.Chart2.Legends.Add(Legend3)
         Me.Chart2.Location = New System.Drawing.Point(541, 24)
         Me.Chart2.Margin = New System.Windows.Forms.Padding(6, 4, 6, 4)
         Me.Chart2.Name = "Chart2"
-        Series1.ChartArea = "ChartArea1"
-        Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series1.Legend = "Legend1"
-        Series1.Name = "Series1"
-        Me.Chart2.Series.Add(Series1)
+        Series3.ChartArea = "ChartArea1"
+        Series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series3.Legend = "Legend1"
+        Series3.Name = "Series1"
+        Me.Chart2.Series.Add(Series3)
         Me.Chart2.Size = New System.Drawing.Size(507, 546)
         Me.Chart2.TabIndex = 3
         Me.Chart2.Text = "Chart3"
@@ -3779,33 +3780,33 @@ Partial Class frmMain
         '
         Me.Chart1.BackColor = System.Drawing.Color.Black
         Me.Chart1.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.Center
-        ChartArea2.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount
-        ChartArea2.AxisX.IsLabelAutoFit = False
-        ChartArea2.AxisX.LabelStyle.Interval = 0R
-        ChartArea2.AxisX.LabelStyle.IntervalOffset = 0R
-        ChartArea2.AxisX.LabelStyle.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.[Auto]
-        ChartArea2.AxisX.LabelStyle.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.[Auto]
-        ChartArea2.AxisX.MajorGrid.Interval = 0R
-        ChartArea2.AxisX.MajorGrid.IntervalOffset = 0R
-        ChartArea2.AxisX.MajorGrid.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.[Auto]
-        ChartArea2.AxisX.MaximumAutoSize = 10.0!
-        ChartArea2.AxisX.ScrollBar.BackColor = System.Drawing.Color.Red
-        ChartArea2.AxisX.TitleFont = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        ChartArea2.AxisX2.IsLabelAutoFit = False
-        ChartArea2.CursorX.AutoScroll = False
-        ChartArea2.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea2)
-        Legend2.Enabled = False
-        Legend2.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend2)
+        ChartArea4.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount
+        ChartArea4.AxisX.IsLabelAutoFit = False
+        ChartArea4.AxisX.LabelStyle.Interval = 0R
+        ChartArea4.AxisX.LabelStyle.IntervalOffset = 0R
+        ChartArea4.AxisX.LabelStyle.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.[Auto]
+        ChartArea4.AxisX.LabelStyle.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.[Auto]
+        ChartArea4.AxisX.MajorGrid.Interval = 0R
+        ChartArea4.AxisX.MajorGrid.IntervalOffset = 0R
+        ChartArea4.AxisX.MajorGrid.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.[Auto]
+        ChartArea4.AxisX.MaximumAutoSize = 10.0!
+        ChartArea4.AxisX.ScrollBar.BackColor = System.Drawing.Color.Red
+        ChartArea4.AxisX.TitleFont = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
+        ChartArea4.AxisX2.IsLabelAutoFit = False
+        ChartArea4.CursorX.AutoScroll = False
+        ChartArea4.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea4)
+        Legend4.Enabled = False
+        Legend4.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend4)
         Me.Chart1.Location = New System.Drawing.Point(22, 24)
         Me.Chart1.Margin = New System.Windows.Forms.Padding(6, 4, 6, 4)
         Me.Chart1.Name = "Chart1"
-        Series2.ChartArea = "ChartArea1"
-        Series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series2.Legend = "Legend1"
-        Series2.Name = "Series1"
-        Me.Chart1.Series.Add(Series2)
+        Series4.ChartArea = "ChartArea1"
+        Series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series4.Legend = "Legend1"
+        Series4.Name = "Series1"
+        Me.Chart1.Series.Add(Series4)
         Me.Chart1.Size = New System.Drawing.Size(507, 546)
         Me.Chart1.TabIndex = 2
         Me.Chart1.Text = "Chart2"
